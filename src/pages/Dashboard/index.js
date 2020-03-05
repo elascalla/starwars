@@ -1,9 +1,22 @@
-import React from 'react';
-
-// import { Container } from './styles';
+import React, { useContext, useEffect } from 'react'
+import { SWContext } from '../../context/Context';
+import { Characters } from '../Characters';
 
 export default function Dashboard() {
+  
+  const { 
+    state: { characters },
+    action: { getSearch }} = useContext(SWContext);
+
+    useEffect(() => {
+      function loadCharacters() {
+        getSearch();
+      }
+  
+      loadCharacters();
+    }, []);
+
   return (
-    <h1>Dashboard</h1>
-  );
+    <Characters characters={characters}/>
+  )
 }
