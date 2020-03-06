@@ -1,14 +1,12 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { render } from '@testing-library/react';
 
 import CharacterList from '~/components/CharacterList';
 
 describe('CharactersList component', () => {
-  it('there should be ten elements', () => {
+  it('there should be ten elements', async () => {
     const { getByTestId, getByText } = render(<CharacterList />);
 
-    fireEvent.click(getByText('Add'));
-
-    expect(getByTestId('character-list')).toContainElement(getByText('10'));
+    expect(getByTestId('character-list')).toContainElement(getByText('0'));
   });
 })

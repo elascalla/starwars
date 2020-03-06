@@ -1,17 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import api from '~/service/api';
 
 export default function CharacterList() {
   const [characters, setCharacters] = useState([]);
 
-  async function handleCharacter() {
-    
-    const response = await api.get('people/');
+  useEffect(() => {
 
-    if(response.data) {
-      setCharacters(response.data.results);
+    async function handleCharacter() {
+    
+      const response = await api.get('people/');
+  
+      if(response.data) {
+        setCharacters([...characters, response.data.results]);
+      }
     }
-  }
+    
+    handleCharacter();
+  }, [])
 
   return (
     <div>
@@ -22,7 +27,6 @@ export default function CharacterList() {
             {character.name}
           </li>))}
       </ul>
-      <button onClick={handleCharacter}>Add</button>
     </div>
   )
 }
