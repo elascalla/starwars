@@ -44,7 +44,7 @@ export default class SWProvider extends Component {
       };
   
     return (
-        <SWContext.Provider value={value}>
+        <SWContext.Provider data-testid="characters" value={value}>
             {this.props.children}
         </SWContext.Provider>
     )
