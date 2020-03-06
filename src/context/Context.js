@@ -18,7 +18,7 @@ export default class SWProvider extends Component {
     const response = await api.get('people/');
 
     if(response.data) {
-      this.setState({ characters: response.data.results });
+      this.setState({ characters: response.data.results.sort((a,b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0)) });
     }
   }
 

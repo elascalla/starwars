@@ -57,7 +57,7 @@ export const Content = styled.div`
     font-weight: bold;
     margin-bottom: 10px;
   }
-  input {
+  select {
     background: rgba(0, 0, 0, 0.1);
     border: 0;
     border-radius: 4px;

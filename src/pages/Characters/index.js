@@ -20,20 +20,26 @@ export const Characters = (props) => {
     <>
       <Content>
         <label htmlFor="name">Character to remove</label>
-        <input 
+        {/* <input 
           name="name" 
           id="name" 
           required
           value={name}
           onChange={e => setName(e.target.value)}
-        />
+        /> */}
+        <select value={name} onChange={e => setName(e.target.value)}>
+          <option value="">Select</option>
+          {characters.map(character => (
+            <option value={character.name}>{character.name}</option>
+          ))}
+        </select>
         <button
             type="button"
             onClick={() => handleRemove(name)}>
           <span>Delete</span>
         </button>
       </Content>
-      <CharactersList>
+      <CharactersList data-testid="characters-list">
         {characters.map(character => (
           <li key={character.url}>
             <strong style={{ color: character.eye_color }} >Name: {character.name}</strong>
