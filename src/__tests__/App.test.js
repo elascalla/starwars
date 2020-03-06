@@ -1,12 +1,9 @@
-import React from 'react';
-import { render } from '@testing-library/react';
-
-import CharacterList from '~/components/CharacterList';
+import api from '~/service/api';
 
 describe('CharactersList component', () => {
   it('there should be ten elements', async () => {
-    const { getByTestId, getByText } = render(<CharacterList />);
-
-    expect(getByTestId('character-list')).toContainElement(getByText('0'));
+    const response = await api.get('people/');
+    
+    expect(response.data.results).toHaveLength(10);
   });
 })
