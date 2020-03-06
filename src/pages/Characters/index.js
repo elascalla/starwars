@@ -30,7 +30,7 @@ export const Characters = (props) => {
         <select value={name} onChange={e => setName(e.target.value)}>
           <option value="">Select</option>
           {characters.map(character => (
-            <option value={character.name}>{character.name}</option>
+            <option key={character.url} value={character.name}>{character.name}</option>
           ))}
         </select>
         <button
